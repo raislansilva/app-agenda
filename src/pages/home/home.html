@@ -7,8 +7,27 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <h2>Tarefas</h2>
+  <ion-list>
+    <ion-item-sliding *ngFor="let tarefa of tarefas">
+
+      <button ion-item (click)="editTarefa(tarefa.id)">
+        <h1>{{ tarefa.titulo }}</h1>
+        <h2>{{ tarefa.descricao }}</h2>
+        <h2>{{ tarefa.data}}</h2>
+      </button>
+
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click)="removeTarefa(tarefa)">
+          <ion-icon name="trash"></ion-icon>
+          Excluir
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="addTarefa()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>

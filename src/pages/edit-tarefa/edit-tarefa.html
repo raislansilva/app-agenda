@@ -1,0 +1,46 @@
+<!--
+  Generated template for the EditTarefaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>editTarefa</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding> 
+
+    <ion-list>
+
+        <ion-item>
+          <ion-label stacked>Nome</ion-label>
+          <ion-input type="text" name="titulo" [(ngModel)]="model.titulo"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>Descrição</ion-label>
+          <ion-input type="text" name="descricao" [(ngModel)]="model.descricao"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>Alarme</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" name="duedate" min="2017" max="2020-12-31" [(ngModel)]="model.data"></ion-datetime>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>Categoria</ion-label>
+          <ion-select name="categoria_id" [(ngModel)]="model.categoria_id">
+            <ion-option *ngFor="let categoria of categorias" value="{{ categoria.id }}">{{ categoria.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-list>
+  
+      <button ion-button block (click)="saveTarefa()">Salvar</button>
+
+</ion-content>
