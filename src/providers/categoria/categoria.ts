@@ -55,8 +55,9 @@ export class CategoriaProvider {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
         let sql = 'SELECT *FROM categorias';
+        var data: any[] = [];
 
-        return db.executeSql(sql)
+        return db.executeSql(sql,data)
           .then((data: any) => {
             if (data.rows.length > 0) {
               let categorias: any[] = [];

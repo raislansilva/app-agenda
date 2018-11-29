@@ -28,7 +28,7 @@
         </ion-item>
   
         <ion-item>
-          <ion-label stacked>Alarme</ion-label>
+          <ion-label stacked>Alerta</ion-label>
           <ion-datetime displayFormat="DD/MM/YYYY" name="duedate" min="2017" max="2020-12-31" [(ngModel)]="model.data"></ion-datetime>
         </ion-item>
   
@@ -41,6 +41,8 @@
 
       </ion-list>
   
-      <button ion-button block (click)="saveTarefa()">Salvar</button>
+      <button ion-button block (click)="save()">Salvar</button>
+      <button ion-button block color="danger" (click)="openAlertNewCategoria()">Criar Categoria</button>
+
 
 </ion-content>

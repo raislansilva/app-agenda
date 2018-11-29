@@ -18,7 +18,8 @@ import { SQLite } from '../../node_modules/@ionic-native/sqlite';
   declarations: [
     MyApp,
     HomePage,
-    EditTarefaPage
+    EditTarefaPage, 
+    
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,7 @@ import { SQLite } from '../../node_modules/@ionic-native/sqlite';
   entryComponents: [
     MyApp,
     HomePage,
-    EditTarefaPage
+    EditTarefaPage,
   ],
   providers: [
     StatusBar,

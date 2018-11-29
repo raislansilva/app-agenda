@@ -94,7 +94,7 @@ export class TarefaProvider {
               }
               return tarefas;
             } else {
-              return [];
+              return []; 
             }
           })
           .catch((e) => console.error(e));
