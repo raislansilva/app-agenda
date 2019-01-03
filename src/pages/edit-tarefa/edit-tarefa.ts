@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { TarefaProvider, Tarefa } from '../../providers/tarefa/tarefa';
 import { CategoriaProvider, Categoria } from '../../providers/categoria/categoria';
+import { DatePicker } from '../../../node_modules/@ionic-native/date-picker';
 
 /**
  * Generated class for the EditTarefaPage page.
@@ -26,8 +27,8 @@ export class EditTarefaPage {
     private toast: ToastController,
     private tarefaProvider: TarefaProvider,
     private categoriaProvider: CategoriaProvider,
-    public alertctrl:AlertController
-
+    public alertctrl:AlertController,
+    private datePicker: DatePicker
 
   ) {
 
@@ -40,6 +41,17 @@ export class EditTarefaPage {
         })
     }
 
+  }
+
+  dateTime(){
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
+    }).then(
+      date => console.log('Got date: ', date),
+      err => console.log('Error occurred while getting date: ', err)
+    );
   }
 
   ionViewDidLoad() {
@@ -72,65 +84,5 @@ export class EditTarefaPage {
     }
   }
 
-
-  openAlertNewCategoria(){
-    let alert = this.alertctrl.create({
-      title: 'Criar Categoria',
-      message: 'Crie uma nova categoria',
-      inputs: [
-        {
-          name: 'name',
-          placeholder: 'Nova Categoria',
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          handler: () =>{
-            console.log('cancelar');
-          }
-        },
-        {
-          text: 'Criar',
-          handler: (data)=>{ 
-            this.categoriaProvider.insert(data)
-            .then(response => {
-               this.toast.create({ message: 'Categoria salva.', duration: 3000, position: 'botton' }).present();
-
-            })
-            .catch( error => {
-              console.error( error );
-            })
-          }
-        }
-      ]
-    });
-    alert.present();
-  }
-
-
-  updateTask(categoria, index){
-    categoria = Object.assign({}, categoria);
-    this.categoriaProvider.update(categoria)
-    .then( response => {
-      this.categorias[index] = categoria;
-    })
-    .catch( error => {
-      console.error( error );
-    })
-  }
-
-  deleteTask(categoria: any, index){
-    this.categoriaProvider.remove(categoria)
-    .then(response => {
-      console.log( response );
-      this.categorias.splice(index, 1);
-    })
-    .catch( error => {
-      console.error( error );
-    })
-  }
-
-  
 
 }

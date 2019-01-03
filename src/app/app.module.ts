@@ -12,6 +12,12 @@ import { CategoriaProvider } from '../providers/categoria/categoria';
 import { EditTarefaPage } from '../pages/edit-tarefa/edit-tarefa';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { SQLite } from '../../node_modules/@ionic-native/sqlite';
+import { DatePicker } from '@ionic-native/date-picker';
+import { TabsPage } from '../pages/tabs/tabs';
+import { FavoritosPage } from '../pages/favoritos/favoritos';
+import { CategoriasPage } from '../pages/categorias/categorias';
+
+
 
 
 @NgModule({
@@ -19,24 +25,32 @@ import { SQLite } from '../../node_modules/@ionic-native/sqlite';
     MyApp,
     HomePage,
     EditTarefaPage, 
+    TabsPage,
+    FavoritosPage,
+    CategoriasPage
     
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     EditTarefaPage,
+    TabsPage,
+    FavoritosPage,
+    CategoriasPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SQLite,
+    DatePicker,
     DatabaseProvider,
     TarefaProvider,
     CategoriaProvider

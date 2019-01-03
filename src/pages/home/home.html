@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="blue">
+  <ion-navbar color="primary" >
     <ion-title text-align="center">
      Gerenciador de Tarefas
     </ion-title>
@@ -7,25 +7,44 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Tarefas</h2>
-  <ion-list >
-      <ion-item-sliding *ngFor="let tarefa of tarefas">
-        <button ion-item (click)="editTarefa(tarefa.id)">
-           <ion-card-header>{{ tarefa.titulo }}</ion-card-header>
-           <h2>{{ tarefa.descricao }}</h2>
-           <h2>{{ tarefa.data}}</h2>
-        </button>
+ 
+  <ion-list>
+    <ion-card *ngFor="let tarefa of tarefas">
 
-        <ion-item-options side="left">
-         <button ion-button color="danger" (click)="removeTarefa(tarefa)">
-           <ion-icon name="trash"></ion-icon>
-              Excluir
-          </button>
-       </ion-item-options>
-        
-      </ion-item-sliding>
-      
-  </ion-list>
+        <ion-card-header>
+
+            <h1>{{ tarefa.titulo}}</h1>
+
+        </ion-card-header>
+
+        <ion-card-content>
+            <p>{{tarefa.descricao}}</p>
+            <p><ion-icon name="alarm"></ion-icon> {{tarefa.data}}</p>
+
+        </ion-card-content>
+
+        <ion-row text-center>
+
+            <ion-col>
+                <button ion-button icon-left clear small (click)="editTarefa(tarefa.id)">
+                    <ion-icon name="create"></ion-icon>
+                    <div>Editar</div>
+                </button>
+            </ion-col>
+
+            <ion-col>
+                <button ion-button icon-left clear small (click)="removeTarefa(tarefa)">
+                    <ion-icon name="trash"></ion-icon>
+                    <div>Excluir</div>
+                </button>
+
+            </ion-col>
+
+        </ion-row>
+
+    </ion-card>
+
+</ion-list>
 
   <ion-fab right bottom>
     <button ion-fab color="primary" (click)="addTarefa()"><ion-icon name="add"></ion-icon></button>

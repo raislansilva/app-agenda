@@ -32,7 +32,7 @@ export class HomePage {
   }
 
   editTarefa(id: number) {
-    this.navCtrl.push(EditTarefaPage, { id: id });
+    this.navCtrl.push(EditTarefaPage, { id: id }); 
   }
 
   removeTarefa(tarefa: Tarefa) {

@@ -26,11 +26,11 @@ export class CategoriaProvider {
       .catch((e) => console.error(e));
   }
 
-  public update(categoria: Categoria) {
+  public update(categoria: Categoria, id) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
         let sql = 'update categorias set name = ? where id = ?';
-        let data = [categoria.name, categoria.id];
+        let data = [categoria.name, id];
 
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -75,7 +75,34 @@ export class CategoriaProvider {
       .catch((e) => console.error(e));
   }
 
+  public get(id: number) {
+    return this.dbProvider.getDB()
+      .then((db: SQLiteObject) => {
+        let sql = 'select * from categorias where id = ?';
+        let data = [id];
+  
+        return db.executeSql(sql, data)
+          .then((data: any) => {
+            if (data.rows.length > 0) {
+              let item = data.rows.item(0);
+              let categoria = new Categoria();
+              categoria.id = item.id;
+              categoria.name = item.titulo;
+              return categoria;
+            }
+  
+            return null;
+          })
+          .catch((e) => console.error(e));
+      })
+      .catch((e) => console.error(e));
+  }
+  
+
 }
+
+
+
 
 export class Categoria {
   id: number;
